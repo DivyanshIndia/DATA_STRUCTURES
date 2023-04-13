@@ -27,6 +27,9 @@ class Minheap:
         self.size = 0
         self.capacity = capacity
 
+    def __str__(self):
+        return self.storage
+
     @staticmethod
     def getparentindex(index):
         return (index-1)//2
@@ -104,6 +107,7 @@ class Minheap:
             raise "Heap is Empty"
         data = self.storage[0]
         self.storage[0] = self.storage[self.size - 1]
+        self.storage[self.size - 1] = 0
         self.size -= 1
         self.heapifydown()
         return data
@@ -128,6 +132,8 @@ class Minheap:
             raise "Heap is Empty"
         data = self.storage[0]
         self.storage[0] = self.storage[self.size - 1]
+        self.storage[self.size - 1] = 0
+
         self.size -= 1
         self.r_heapifydown(0)
         return data
@@ -142,6 +148,25 @@ class Minheap:
         if smaller != index:
             self.swap(index, smaller)
             self.r_heapifydown(smaller)
+
+
+# heap = Minheap(10)
+# heap.insert(1)
+# heap.insert(2)
+# heap.insert(3)
+# heap.insert(7)
+# heap.insert(4)
+# heap.insert(22)
+# heap.insert(34)
+# heap.insert(99)
+# heap.insert(111)
+# heap.insert(-1)
+# print(heap.__str__())
+# heap.remove()
+# heap.remove()
+# heap.remove()
+# print(heap.__str__())
+
 
 
 
